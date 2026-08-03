@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://raw.githack.com/MisfitMEdiAhouse/misfit-media-designer/main/ials-command-center-v2/sitemap.xml
