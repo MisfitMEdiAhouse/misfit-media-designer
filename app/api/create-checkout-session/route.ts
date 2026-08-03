@@ -82,7 +82,12 @@ export async function POST(req: Request) {
       'Status: Deposit not paid yet',
     ].join('\n');
 
-    sendOperatorSms(pendingMessage, false).catch((error) => console.error('Pending lead SMS failed', error));
+    try {
+      await sendOperatorSms(pendingMessage, false);
+    } catch (smsError) {
+      console.error('Pending lead SMS failed', smsError);
+    }
+
     return NextResponse.redirect(session.url || origin, { status: 303 });
   } catch (error) {
     console.error('Checkout session error', error);
