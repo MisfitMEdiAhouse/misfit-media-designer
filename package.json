@@ -5,20 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "next": "latest",
-    "qrcode": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "stripe": "latest",
-    "twilio": "latest"
+    "next": "16.2.12",
+    "qrcode": "1.5.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "stripe": "22.3.2",
+    "twilio": "6.0.2"
   },
   "devDependencies": {
     "@types/node": "latest",
-    "@types/qrcode": "latest",
+    "@types/qrcode": "1.5.6",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "typescript": "latest"
