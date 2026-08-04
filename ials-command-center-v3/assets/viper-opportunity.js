@@ -1,8 +1,58 @@
 (()=>{
+  const script=document.currentScript;
+  const assetBase=script?.src||new URL('assets/viper-opportunity.js',location.href).href;
+  const logoSelector='img[data-ials-logo],img[src*="ials-warbird.svg"],.brand-lockup img,.admin-header img,.footer img';
+
+  const decodeImage=src=>new Promise((resolve,reject)=>{
+    const image=new Image();
+    const timer=setTimeout(()=>reject(new Error('captain logo decode timeout')),15000);
+    image.onload=()=>{clearTimeout(timer);resolve(image)};
+    image.onerror=()=>{clearTimeout(timer);reject(new Error('captain logo decode failed'))};
+    image.src=src;
+  });
+
+  const installCaptainLogo=async()=>{
+    try{
+      const files=['captain-logo-prefix-0.txt','captain-logo-prefix-1.txt','captain-logo.txt'];
+      const chunks=await Promise.all(files.map(name=>fetch(new URL(`./media/${name}?v=2`,assetBase),{cache:'no-store'}).then(response=>{
+        if(!response.ok)throw new Error(`${name} unavailable (${response.status})`);
+        return response.text();
+      })));
+      const encoded=chunks.join('').replace(/\s+/g,'');
+      if(encoded.length!==34640||!encoded.startsWith('UklGRnRlAABXRUJQ'))throw new Error(`invalid captain logo payload (${encoded.length})`);
+      const logoUrl=`data:image/webp;base64,${encoded}`;
+      await decodeImage(logoUrl);
+      const apply=()=>{
+        document.querySelectorAll(logoSelector).forEach(img=>{
+          img.src=logoUrl;
+          img.removeAttribute('srcset');
+          img.style.setProperty('display','block','important');
+          img.style.setProperty('opacity','1','important');
+          img.style.setProperty('visibility','visible','important');
+          img.style.setProperty('object-fit','contain','important');
+          img.style.setProperty('background','transparent','important');
+        });
+        document.querySelectorAll('link[rel~="icon"]').forEach(link=>link.href=logoUrl);
+        document.documentElement.classList.remove('ials-logo-loading','ials-logo-failed');
+        document.documentElement.classList.add('ials-logo-ready','ials-logo-fixed','ials-media-ready');
+      };
+      apply();
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});
+      const observer=new MutationObserver(()=>apply());
+      observer.observe(document.documentElement,{childList:true,subtree:true});
+      setTimeout(()=>observer.disconnect(),10000);
+      window.IALSCaptainLogo=logoUrl;
+    }catch(error){
+      console.error('IALS exact captain logo repair failed',error);
+    }
+  };
+  installCaptainLogo();
+
   const root=location.pathname.includes('/ials-command-center-v3/')?location.pathname.split('/ials-command-center-v3/')[0]+'/ials-command-center-v3/':'./';
   const page=root+'programs/viper-500-600.html';
   const style=document.createElement('style');
   style.textContent=`
+    html.ials-logo-ready ${logoSelector}{opacity:1!important;visibility:visible!important;display:block!important}
     .viper-priority{padding:24px clamp(18px,4vw,68px)!important;background:linear-gradient(100deg,#2a1a08,#07131c 58%,#081824);border-block:1px solid #9a6b29;box-shadow:inset 0 0 70px rgba(0,0,0,.48)}
     .viper-priority-box{display:grid;grid-template-columns:1.35fr .65fr;gap:24px;align-items:center;padding:24px;border:1px solid #9b7135;background:linear-gradient(145deg,rgba(22,35,43,.97),rgba(4,10,14,.98));box-shadow:0 18px 48px rgba(0,0,0,.34)}
     .viper-priority h2{margin:10px 0 8px;font-size:clamp(36px,5vw,70px)}
