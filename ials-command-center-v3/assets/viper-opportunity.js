@@ -1,6 +1,14 @@
 (()=>{
   const script=document.currentScript;
   const assetBase=script?.src||new URL('assets/viper-opportunity.js',location.href).href;
+
+  if(!document.querySelector('script[data-ials-premium-layout]')){
+    const premium=document.createElement('script');
+    premium.dataset.ialsPremiumLayout='2';
+    premium.src=new URL('./premium-layout.js?v=2',assetBase).href;
+    document.head.appendChild(premium);
+  }
+
   const logoSelector='img[data-ials-logo],img[src*="ials-warbird.svg"],.brand-lockup img,.admin-header img,.footer img';
 
   const decodeImage=src=>new Promise((resolve,reject)=>{
