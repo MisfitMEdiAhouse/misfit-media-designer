@@ -1,11 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" role="img" aria-labelledby="t d">
-<title id="t">Four-engine military transport aircraft</title><desc id="d">Stylized warbird transport aircraft over Utah mountains, with an IALS tail emblem.</desc>
-<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08131e"/><stop offset=".63" stop-color="#193246"/><stop offset="1" stop-color="#6d4926"/></linearGradient><linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#717b7f"/><stop offset=".5" stop-color="#1d282e"/><stop offset="1" stop-color="#090f13"/></linearGradient><radialGradient id="sun"><stop stop-color="#f2b85a" stop-opacity=".9"/><stop offset="1" stop-color="#f2b85a" stop-opacity="0"/></radialGradient><filter id="shadow"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-opacity=".55"/></filter></defs>
-<rect width="1400" height="560" fill="url(#sky)"/><circle cx="1110" cy="130" r="180" fill="url(#sun)"/><path d="M0 420 150 302 257 370 386 228 521 367 690 264 845 391 1010 245 1190 380 1325 290 1400 330V560H0z" fill="#111b22"/><path d="M0 460 175 370 280 428 430 344 575 438 730 360 920 447 1100 353 1260 431 1400 390V560H0z" fill="#0a1116"/>
-<g filter="url(#shadow)" transform="translate(210 90)">
-<path fill="url(#metal)" stroke="#020608" stroke-width="8" d="M45 194c120-58 244-84 385-88l264-4c86-2 155 15 243 55l123 57-6 31-235-35-89 56-295-14-164-34-210 13-17-17z"/>
-<path fill="#222e34" stroke="#020608" stroke-width="8" d="m677 110 84-102h57l-26 109z"/><path fill="#222e34" stroke="#020608" stroke-width="8" d="m212 171-74-99 46-20 115 88z"/>
-<path fill="#222e34" stroke="#020608" stroke-width="8" d="m417 167-170-150 81-5 205 141zm127 7 248-149 106 18-222 143z"/>
-<g fill="#111b20" stroke="#030608" stroke-width="7"><ellipse cx="337" cy="137" rx="45" ry="54"/><ellipse cx="479" cy="127" rx="45" ry="54"/><ellipse cx="646" cy="126" rx="45" ry="54"/><ellipse cx="783" cy="135" rx="45" ry="54"/></g>
-<g stroke="#b17a2d" stroke-width="6"><path d="M337 78v118M278 137h118M296 96l82 82M378 96l-82 82"/><path d="M479 68v118M420 127h118M438 86l82 82M520 86l-82 82"/><path d="M646 67v118M587 126h118M605 85l82 82M687 85l-82 82"/><path d="M783 76v118M724 135h118M742 94l82 82M824 94l-82 82"/></g>
-<path fill="#d2a24b" stroke="#07131d" stroke-width="5" d="M735 36h71l-16 53h-52z"/><circle cx="772" cy="61" r="18" fill="#07131d"/><path d="m772 45 6 10 12 2-9 8 3 12-12-6-11 6 2-12-9-8 12-2z" fill="#d2a24b"/><text x="420" y="220" font-family="Arial Black,Arial" font-size="30" letter-spacing="7" fill="#d5a348">IALS</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid slice">
+<title id="title">C-130 turbine logistics at sunset</title><desc id="desc">A cinematic military transport aircraft on a wet runway with turbine parts, Utah mountains and a hangar.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#071019"/><stop offset=".38" stop-color="#1e252a"/><stop offset=".67" stop-color="#8b5526"/><stop offset="1" stop-color="#16120e"/></linearGradient>
+  <radialGradient id="sun"><stop stop-color="#ffe2a0" stop-opacity=".95"/><stop offset=".3" stop-color="#d8943c" stop-opacity=".55"/><stop offset="1" stop-color="#b56d20" stop-opacity="0"/></radialGradient>
+  <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#171b1d"/><stop offset="1" stop-color="#020405"/></linearGradient>
+  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3d4447"/><stop offset=".35" stop-color="#131719"/><stop offset=".68" stop-color="#070a0b"/><stop offset="1" stop-color="#303638"/></linearGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#efd084"/><stop offset=".5" stop-color="#b57525"/><stop offset="1" stop-color="#714111"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="20"/></filter><filter id="shadow"><feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000" flood-opacity=".82"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<circle cx="630" cy="355" r="250" fill="url(#sun)" filter="url(#blur)"/>
+<g opacity=".75" fill="#222b30"><path d="M0 455 180 310l95 72 130-128 110 104 170-170 155 161 150-108 142 151 175-166 213 229v124H0z"/><path d="M0 500 210 380l145 92 155-104 130 82 173-137 172 141 160-88 165 94 190-112 120 113v122H0z" fill="#10171c"/></g>
+<g opacity=".35" fill="#d4b27b"><path d="M90 160c220-95 345-60 480 10-198-19-329 4-480 58zM820 92c245-79 430-41 666 55-267-37-455-17-666 31z"/><path d="M260 255c184-63 333-36 490 33-189-27-333-12-490 26z"/></g>
+<rect y="610" width="1600" height="290" fill="url(#ground)"/>
+<g opacity=".28" stroke="#d99a49" stroke-width="4"><path d="M0 752c280-75 550-34 825 5s500 37 775-23"/><path d="M0 810c350-80 665-42 960 5s434 35 640-16"/></g>
+<g opacity=".22" fill="#dd9d4d"><path d="M220 650h600l260 226H70z"/><path d="M980 665h420l155 220h-720z"/></g>
+<g transform="translate(1055 250)" filter="url(#shadow)"><path d="M0 95 105 0h360l95 72v306H0z" fill="#0b0f11" stroke="#5d421e" stroke-width="4"/><rect x="70" y="126" width="405" height="220" fill="#151b1e" stroke="#8c662c" stroke-width="5"/><g fill="#d99b47" opacity=".65"><rect x="95" y="150" width="18" height="170"/><rect x="145" y="150" width="18" height="170"/><rect x="195" y="150" width="18" height="170"/><rect x="245" y="150" width="18" height="170"/><rect x="295" y="150" width="18" height="170"/><rect x="345" y="150" width="18" height="170"/><rect x="395" y="150" width="18" height="170"/></g><path d="M78 119h390" stroke="#d8a24f" stroke-width="6"/><text x="270" y="84" text-anchor="middle" fill="#dcb56e" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="4">IALS TURBINE SUPPORT</text></g>
+<g transform="translate(230 315)" filter="url(#shadow)">
+  <path d="M75 214c38-91 152-151 332-159 160-7 307 37 399 112l212 9 82 61-104 47-197 6c-93 62-234 91-393 81-172-11-286-70-331-157z" fill="url(#metal)" stroke="#07090a" stroke-width="9"/>
+  <path d="M755 174 960 49l62 11-109 125zM703 304l228 120 69-21-130-112z" fill="#111719" stroke="#050708" stroke-width="8"/>
+  <path d="M252 107 423 17l80 6-83 73z" fill="#12181b" stroke="#050708" stroke-width="7"/>
+  <path d="M127 217c52-50 105-78 164-88l-11 59c-54 8-101 23-153 53z" fill="#242b2e"/>
+  <ellipse cx="239" cy="223" rx="78" ry="109" fill="#0b0f11" stroke="#3b4143" stroke-width="7"/>
+  <ellipse cx="237" cy="223" rx="48" ry="72" fill="#182025"/>
+  <g fill="#090c0d" stroke="#31383a" stroke-width="5"><ellipse cx="575" cy="260" rx="42" ry="70"/><ellipse cx="708" cy="267" rx="42" ry="70"/><ellipse cx="835" cy="260" rx="42" ry="70"/><ellipse cx="945" cy="246" rx="39" ry="64"/></g>
+  <g fill="#0b0e10" stroke="#050708" stroke-width="6"><circle cx="331" cy="362" r="42"/><circle cx="763" cy="380" r="46"/><circle cx="838" cy="376" r="46"/></g>
+  <g fill="#6a7072" opacity=".75"><rect x="356" y="124" width="38" height="22" rx="8"/><rect x="406" y="112" width="38" height="22" rx="8"/><rect x="456" y="105" width="38" height="22" rx="8"/><rect x="506" y="103" width="38" height="22" rx="8"/></g>
+  <circle cx="510" cy="213" r="50" fill="#090c0e" stroke="url(#gold)" stroke-width="8"/><path d="m510 170 13 31 34 3-26 21 8 34-29-18-29 18 8-34-26-21 34-3z" fill="url(#gold)"/><text x="510" y="291" text-anchor="middle" fill="#d6a552" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="5">IALS</text>
+</g>
+<g transform="translate(1135 625)" filter="url(#shadow)"><g fill="url(#metal)" stroke="#7d5a28" stroke-width="5"><ellipse cx="98" cy="109" rx="100" ry="52"/><ellipse cx="98" cy="109" rx="64" ry="33" fill="#050708"/><ellipse cx="270" cy="93" rx="116" ry="60"/><ellipse cx="270" cy="93" rx="73" ry="39" fill="#050708"/><ellipse cx="420" cy="126" rx="78" ry="42"/><ellipse cx="420" cy="126" rx="43" ry="24" fill="#050708"/></g></g>
+<g opacity=".44" fill="#d18f3f"><ellipse cx="525" cy="787" rx="355" ry="22"/><ellipse cx="1260" cy="806" rx="240" ry="18"/></g>
+<rect width="1600" height="900" fill="none" stroke="#b47a2e" stroke-opacity=".35" stroke-width="8"/>
+</svg>
