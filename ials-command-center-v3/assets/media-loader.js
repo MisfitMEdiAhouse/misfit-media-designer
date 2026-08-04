@@ -2,6 +2,28 @@
   const script=document.currentScript;
   const base=script?.src||new URL('assets/media-loader.js',location.href).href;
 
+  document.documentElement.style.setProperty('--ials-hero-image','linear-gradient(135deg,#111b24 0%,#04090d 58%,#382713 100%)');
+  const style=document.createElement('style');
+  style.textContent=`
+    .brand-lockup img.premium-logo-loaded,.admin-header img.premium-logo-loaded{
+      width:210px!important;height:auto!important;max-height:112px!important;
+      object-fit:contain!important;object-position:center!important;background:transparent!important;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.78))!important;
+    }
+    .footer img.premium-logo-loaded{
+      width:260px!important;height:auto!important;max-height:180px!important;
+      object-fit:contain!important;background:transparent!important;
+    }
+    @media(max-width:760px){
+      .brand-lockup img.premium-logo-loaded,.admin-header img.premium-logo-loaded{
+        width:158px!important;max-height:96px!important;
+      }
+      .site-nav,.admin-header{min-height:92px!important}
+      .footer img.premium-logo-loaded{width:215px!important;max-height:150px!important;margin-inline:auto!important}
+    }
+  `;
+  document.head.appendChild(style);
+
   const join=async(name,count)=>{
     const responses=await Promise.all(
       Array.from({length:count},(_,i)=>
@@ -16,7 +38,7 @@
 
   const loadImage=src=>new Promise((resolve,reject)=>{
     const img=new Image();
-    const timer=setTimeout(()=>reject(new Error('image load timeout')),10000);
+    const timer=setTimeout(()=>reject(new Error('image load timeout')),12000);
     img.onload=()=>{clearTimeout(timer);resolve(img)};
     img.onerror=()=>{clearTimeout(timer);reject(new Error('image decode failed'))};
     img.src=src;
@@ -42,15 +64,15 @@
       }
     }
     if(!found)return src;
-    const padX=Math.round((maxX-minX)*.035),padY=Math.round((maxY-minY)*.05);
+    const padX=Math.round((maxX-minX)*.04),padY=Math.round((maxY-minY)*.055);
     minX=Math.max(0,minX-padX);maxX=Math.min(scan.width,maxX+padX);
     minY=Math.max(0,minY-padY);maxY=Math.min(scan.height,maxY+padY);
     const w=maxX-minX,h=maxY-minY;
     const out=document.createElement('canvas');
-    const targetW=Math.min(1000,w);
+    const targetW=Math.min(1100,w);
     out.width=targetW;out.height=Math.round(h*(targetW/w));
     out.getContext('2d').drawImage(img,minX,minY,w,h,0,0,out.width,out.height);
-    return out.toDataURL('image/webp',.9);
+    return out.toDataURL('image/webp',.91);
   };
 
   const loadOpportunity=()=>{
