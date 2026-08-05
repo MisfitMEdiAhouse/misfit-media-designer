@@ -1,0 +1,6 @@
+- Removed mobile hero image spacer
+- Enlarged responsive captain logo
+- Rebuilt public and admin responsive layout
+- Removed placeholder illustration blocks
+- Repaired inventory loader path
+- Recomputed inventory metrics from loaded data
