@@ -1,6 +1,6 @@
 import twilio from 'twilio';
 
-const OWNER_FALLBACK_PHONE = '+18016639231';
+const OWNER_FALLBACK_PHONE = '+13853673217';
 const BRANDON_FALLBACK_PHONE = '+18014589990';
 
 export function normalizeUsPhone(value: string | undefined | null) {
