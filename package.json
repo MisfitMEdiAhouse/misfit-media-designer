@@ -2,24 +2,7 @@
   "name": "weber-junk-rescue",
   "version": "1.0.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "16.2.12",
-    "qrcode": "1.5.4",
-    "react": "19.2.8",
-    "react-dom": "19.2.8",
-    "stripe": "22.3.2",
-    "twilio": "6.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "latest",
-    "@types/qrcode": "1.5.5",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "typescript": "latest"
-  }
+  "scripts": {"dev":"next dev","build":"next build","start":"next start"},
+  "dependencies": {"next":"16.2.12","qrcode":"1.5.4","react":"19.2.8","react-dom":"19.2.8","stripe":"22.3.2","twilio":"6.0.2"},
+  "devDependencies": {"@types/node":"latest","@types/qrcode":"1.5.5","@types/react":"latest","@types/react-dom":"latest","typescript":"6.0.3"}
 }
