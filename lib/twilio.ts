@@ -1,5 +1,7 @@
 import twilio from 'twilio';
 
+const BRANDON_FALLBACK_PHONE = '+18014589990';
+
 export function normalizeUsPhone(value: string | undefined | null) {
   if (!value) return null;
   const digits = value.replace(/\D/g, '');
@@ -30,9 +32,13 @@ export async function sendSms(toValue: string | undefined | null, body: string) 
   return { sent: true, sid: message.sid } as const;
 }
 
+export function getBrandonPhone() {
+  return normalizeUsPhone(process.env.BRANDON_PHONE) || BRANDON_FALLBACK_PHONE;
+}
+
 export async function sendOperatorSms(body: string, includeBrandon = true) {
-  const recipients = [process.env.OWNER_PHONE];
-  if (includeBrandon) recipients.push(process.env.BRANDON_PHONE);
+  const recipients: Array<string | undefined> = [process.env.OWNER_PHONE];
+  if (includeBrandon) recipients.push(getBrandonPhone());
   const unique = Array.from(new Set(recipients.filter(Boolean)));
   return Promise.all(unique.map((recipient) => sendSms(recipient, body)));
 }
