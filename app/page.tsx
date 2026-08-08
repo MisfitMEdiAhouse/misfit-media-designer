@@ -22,9 +22,9 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
     utmContent: clean(first(query.utm_content), ''),
   };
 
-  const bookingPhone = process.env.NEXT_PUBLIC_BOOKING_PHONE || '';
+  const bookingPhone = process.env.NEXT_PUBLIC_BOOKING_PHONE || '+18019388763';
   const smsBody = encodeURIComponent('I need a Weber County junk-removal quote. I can send photos and the pickup address.');
-  const smsHref = bookingPhone ? `sms:${bookingPhone}?body=${smsBody}` : '#book';
+  const smsHref = `sms:${bookingPhone}?body=${smsBody}`;
   const checkoutCancelled = first(query.cancelled) === '1';
   const checkoutError = first(query.error) === 'checkout';
 
@@ -98,7 +98,7 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
         </section>
 
         <section className="section booking-section" id="book">
-          <div className="booking-intro"><span className="section-kicker">BOOK FAST</span><h2>Know what you need? Knock it out here.</h2><p>Your $150 dispatch deposit goes through secure Stripe Checkout and is credited toward the final job total. After payment, choose the exact pickup window.</p><ul className="check-list"><li>No loading before price approval</li><li>Deposit credited to completed service</li><li>Normal business-hours scheduling</li><li>Automatic operator notification</li></ul></div>
+          <div className="booking-intro"><span className="section-kicker">BOOK FAST</span><h2>Know what you need? Knock it out here.</h2><p>Your $150 dispatch deposit goes through secure Stripe Checkout and is credited toward the final job total. After payment, choose the exact pickup window.</p><ul className="check-list"><li>No loading before price approval</li><li>Deposit credited to completed service</li><li>Normal business-hours scheduling</li><li>Operator alerts after payment</li></ul></div>
           <BookingForm attribution={attribution} bookingPhone={bookingPhone} />
         </section>
 
