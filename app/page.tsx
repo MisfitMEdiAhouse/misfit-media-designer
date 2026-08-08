@@ -22,7 +22,7 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
     utmContent: clean(first(query.utm_content), ''),
   };
 
-  const bookingPhone = process.env.NEXT_PUBLIC_BOOKING_PHONE || '+18019388763';
+  const bookingPhone = process.env.NEXT_PUBLIC_BOOKING_PHONE || '+13853673217';
   const smsBody = encodeURIComponent('I need a Weber County junk-removal quote. I can send photos and the pickup address.');
   const smsHref = `sms:${bookingPhone}?body=${smsBody}`;
   const checkoutCancelled = first(query.cancelled) === '1';
@@ -50,7 +50,7 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
               <a className="button button-secondary" href="#book">Book It Myself</a>
               <a className="button button-ghost" href={smsHref}>Text Photos</a>
             </div>
-            <div className="trust-row"><span>Local crew</span><span>Up-front range</span><span>Secure Stripe deposit</span><span>Voice-guided booking</span></div>
+            <div className="trust-row"><span>Local crew</span><span>Up-front range</span><span>Secure deposit when enabled</span><span>Voice-guided booking</span></div>
           </div>
 
           <aside className="hero-console" aria-label="Booking path">
@@ -59,15 +59,15 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
             <div className="flow-list">
               <div><b>01</b><span>Tell us what needs to go</span><em>Voice or tap</em></div>
               <div><b>02</b><span>Confirm planning range</span><em>No bait pricing</em></div>
-              <div><b>03</b><span>Pay dispatch deposit</span><em>$150 applied</em></div>
+              <div><b>03</b><span>Approve quote</span><em>Before loading</em></div>
               <div><b>04</b><span>Choose pickup window</span><em>Done</em></div>
             </div>
           </aside>
         </section>
 
-        {(checkoutCancelled || checkoutError) && <div className="alert-banner" role="alert">{checkoutError ? 'Checkout could not start. Your card was not charged. Please try again or text us.' : 'Your reservation was not completed. Your card was not charged.'}</div>}
+        {(checkoutCancelled || checkoutError) && <div className="alert-banner" role="alert">{checkoutError ? 'Checkout is not enabled yet. Your card was not charged. Please text or call us for the quote.' : 'Your reservation was not completed. Your card was not charged.'}</div>}
 
-        <section className="metric-strip"><div><strong>14FT</strong><span>High-wall trailer</span></div><div><strong>$150</strong><span>Deposit applied</span></div><div><strong>9–5</strong><span>Business hours</span></div><div><strong>WEBER</strong><span>County-first</span></div></section>
+        <section className="metric-strip"><div><strong>14FT</strong><span>High-wall trailer</span></div><div><strong>TEXT</strong><span>Photos to 385-367-3217</span></div><div><strong>9–5</strong><span>Business hours</span></div><div><strong>WEBER</strong><span>County-first</span></div></section>
 
         <section className="section" id="pricing">
           <div className="section-heading"><div><span className="section-kicker">LOAD-BASED PRICING</span><h2>Enough capacity to make a cleanout count.</h2></div><p>Planning ranges, not bait prices. Final pricing is approved before anything gets loaded.</p></div>
@@ -94,22 +94,22 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
 
         <section className="guided-promo section">
           <div className="guided-promo-art"><img src="/misfit-skull-rose.svg" alt="Misfit skull and rose" /></div>
-          <div><span className="section-kicker">DON'T WANT TO FILL OUT A FORM?</span><h2>Talk to the booking guide.</h2><p>The guide speaks each step, lets you answer text fields by voice, keeps a visible progress bar, and sends you into the same secure deposit + calendar flow.</p><GuidedBooking attribution={attribution} /></div>
+          <div><span className="section-kicker">DON'T WANT TO FILL OUT A FORM?</span><h2>Talk to the booking guide.</h2><p>The guide speaks each step, lets you answer text fields by voice, keeps a visible progress bar, and turns the answers into the same quote request.</p><GuidedBooking attribution={attribution} /></div>
         </section>
 
         <section className="section booking-section" id="book">
-          <div className="booking-intro"><span className="section-kicker">BOOK FAST</span><h2>Know what you need? Knock it out here.</h2><p>Your $150 dispatch deposit goes through secure Stripe Checkout and is credited toward the final job total. After payment, choose the exact pickup window.</p><ul className="check-list"><li>No loading before price approval</li><li>Deposit credited to completed service</li><li>Normal business-hours scheduling</li><li>Operator alerts after payment</li></ul></div>
+          <div className="booking-intro"><span className="section-kicker">BOOK FAST</span><h2>Know what you need? Knock it out here.</h2><p>Send the job details and photos first. We confirm the planning range and final price before loading. Deposit checkout will be enabled when the junk-removal Stripe destination is configured.</p><ul className="check-list"><li>No loading before price approval</li><li>Text photos to the monitored Google Voice line</li><li>Normal business-hours scheduling</li><li>Brandon dispatch alerts when backend notification is enabled</li></ul></div>
           <BookingForm attribution={attribution} bookingPhone={bookingPhone} />
         </section>
 
         <section className="section areas-section"><div className="areas-copy"><span className="section-kicker">LOCAL ROUTING</span><h2>Built for Weber County.</h2><p>Ogden, Roy, West Haven, Riverdale, South Ogden, North Ogden, Harrisville, Pleasant View, Plain City, and nearby Weber County areas.</p></div><div className="route-map" aria-hidden="true"><span className="route-line route-one" /><span className="route-line route-two" />{['OGDEN','ROY','WEST HAVEN','NORTH OGDEN','RIVERDALE'].map((city, i) => <i key={city} className={`map-pin pin-${i+1}`}>{city}</i>)}</div></section>
 
-        <section className="section faq-section"><div className="section-heading"><div><span className="section-kicker">STRAIGHT ANSWERS</span><h2>Before we roll the truck.</h2></div></div><div className="faq-grid"><details><summary>Is the online price final?</summary><p>No. The ranges help choose the right category. We confirm the final total before loading.</p></details><details><summary>What does the $150 deposit do?</summary><p>It reserves dispatch and is applied to your completed job total.</p></details><details><summary>Can I send photos?</summary><p>Yes. Use Text Photos or add a share link. Wide shots plus close-ups of heavy items work best.</p></details><details><summary>What can’t go in the trailer?</summary><p>Hazardous chemicals, explosives, biohazards, unknown liquids, and prohibited landfill materials are not accepted.</p></details></div></section>
+        <section className="section faq-section"><div className="section-heading"><div><span className="section-kicker">STRAIGHT ANSWERS</span><h2>Before we roll the truck.</h2></div></div><div className="faq-grid"><details><summary>Is the online price final?</summary><p>No. The ranges help choose the right category. We confirm the final total before loading.</p></details><details><summary>Can I send photos?</summary><p>Yes. Text wide shots and close-ups of heavy items to (385) 367-3217.</p></details><details><summary>Can I reserve online?</summary><p>Quote requests are live now. Secure deposit checkout will be enabled when the junk-removal payment destination is configured.</p></details><details><summary>What can’t go in the trailer?</summary><p>Hazardous chemicals, explosives, biohazards, unknown liquids, and prohibited landfill materials are not accepted.</p></details></div></section>
 
-        <section className="final-cta"><div><span className="section-kicker">READY WHEN YOU ARE</span><h2>Your space is worth more than the junk in it.</h2></div><GuidedBooking attribution={attribution} /></section>
-        <footer className="footer"><div className="footer-brand"><img src="/misfit-skull-rose.svg" alt="Misfit skull and rose" /><span><strong>Weber Junk Rescue</strong><small>Powered by Misfit Mediahouse</small></span></div><p>Final price is approved before loading. Service subject to access, safety, material, disposal, and route availability.</p></footer>
+        <section className="final-cta"><div><span className="section-kicker">READY WHEN YOU ARE</span><h2>Your space is worth more than the junk in it.</h2></div><a className="button" href={smsHref}>Text the Load</a></section>
+        <footer className="footer"><div className="footer-brand"><img src="/misfit-skull-rose.svg" alt="Misfit skull and rose" /><span><strong>Weber Junk Rescue</strong><small>Powered by Misfit Mediahouse</small></span></div><p>Call or text (385) 367-3217 • misfitmediahouse@gmail.com • Final price approved before loading.</p></footer>
       </div>
-      <div className="mobile-cta"><a className="button" href="#book">Book Fast</a><a className="button button-secondary" href="#top">Guide Me</a></div>
+      <div className="mobile-cta"><a className="button" href="#book">Fast Quote</a><a className="button button-secondary" href={smsHref}>Text Photos</a></div>
     </main>
   );
 }
