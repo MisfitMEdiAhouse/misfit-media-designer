@@ -1,17 +1,18 @@
 'use strict';
 
 /*
-  IALS ADMIN BRAND + FEATURE + COMMISSION LOCK
-  --------------------------------------------
-  This bootstrap intentionally loads three known assets in parser order:
+  IALS ADMIN BRAND + FEATURE + COMMISSION + EXPORT GATE LOCK
+  ----------------------------------------------------------
+  This bootstrap intentionally loads four known assets in parser order:
   1) the shared captain-logo/media runtime from the current site build;
   2) the verified Money Board/admin feature bundle from commit 41797d06;
-  3) the current browser-local Deal Ledger with a fixed Misfit 10% commission.
+  3) the current browser-local Deal Ledger with a fixed Misfit 10% commission;
+  4) the browser-local Export / Quote Gate for compliance-controlled revenue.
 
   Keeping the feature bundle commit-pinned prevents a future cosmetic edit from
   silently deleting the Money Board, Lead Inbox, compliance review, Money Queue,
-  backup/restore, or Copilot functionality again. The deal ledger is isolated in
-  its own file so it can be upgraded without touching the locked feature bundle.
+  backup/restore, or Copilot functionality again. The deal ledger and export gate
+  are isolated so they can be upgraded without touching the locked feature bundle.
 */
 (() => {
   if (window.__IALS_ADMIN_BRAND_FEATURE_LOCK__) return;
@@ -21,6 +22,7 @@
   const assetRoot = new URL('./', current?.src || new URL('assets/admin-assistant.js', location.href));
   const mediaUrl = new URL('media-loader.js?v=ials-brand-lock-20260805a', assetRoot).href;
   const dealLedgerUrl = new URL('deal-ledger.js?v=ials-misfit-commission-lock-20260805a', assetRoot).href;
+  const exportGateUrl = new URL('export-compliance-gate.js?v=ials-export-gate-20260808a', assetRoot).href;
   const lockedFeatureUrl = 'https://raw.githack.com/MisfitMEdiAhouse/misfit-media-designer/41797d06d24d3cf0473d4e83a515f376de849cb7/ials-command-center-v3/assets/admin-assistant.js?v=ials-feature-lock-20260804c';
   const publicSiteUrl = new URL('index.html', location.href).href;
 
@@ -45,6 +47,7 @@
   document.write('<script src="' + mediaUrl + '"></' + 'script>');
   document.write('<script src="' + lockedFeatureUrl + '"></' + 'script>');
   document.write('<script src="' + dealLedgerUrl + '"></' + 'script>');
+  document.write('<script src="' + exportGateUrl + '"></' + 'script>');
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', wirePublicSiteButton, { once: true });
