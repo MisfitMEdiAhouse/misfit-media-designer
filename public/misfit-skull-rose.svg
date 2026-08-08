@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+<title id="title">Misfit skull and rose</title><desc id="desc">Electric blue skull holding a red rose with green stem on black.</desc>
+<defs><filter id="g"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect width="640" height="420" fill="#020304" rx="28"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#g)">
+<g stroke="#19bfff" stroke-width="9">
+<path d="M286 68c-70 0-126 49-126 120 0 43 21 75 55 91l-5 39 42-17c19 8 43 11 68 6 61-11 101-54 101-113 0-76-60-126-135-126z"/>
+<path d="M214 180c0-27 22-48 48-48 30 0 45 20 43 48-2 25-20 43-45 43-29 0-46-18-46-43zm105-1c0-26 19-45 45-45 29 0 47 20 47 47 0 26-20 45-47 45-27 0-45-20-45-47z"/>
+<path d="M302 198l-24 45 33 9 24-10-13-45z"/>
+<path d="M233 256c23 26 45 34 78 35 33 0 62-11 82-36"/>
+<path d="M249 276l9 38m22-30 6 40m24-38 3 41m22-42-4 38m25-43-9 34"/>
+<path d="M250 317c18 27 44 40 72 39 30-2 54-16 69-42"/>
+</g>
+<g stroke="#70dd2b" stroke-width="8">
+<path d="M141 323c99-18 208-54 324-122"/>
+<path d="M156 313c-25-48-67-66-100-67 20 42 45 69 100 67z"/>
+<path d="M190 294c-4 45-19 74-47 94 3-43 18-72 47-94z"/>
+<path d="M405 227c16-34 49-47 75-45-13 31-35 47-75 45z"/>
+</g>
+<g stroke="#ff3a28" stroke-width="9">
+<path d="M463 174c16-37 45-57 79-50 29 6 48 35 38 62-7 19-23 31-44 36 11 15 8 34-4 47-21-8-34-22-39-40-15 11-34 14-51 7 2-24 11-42 29-55-11-6-18-17-20-31z"/>
+<path d="M474 166c21-25 51-33 77-20-26 7-47 21-60 42m22-56c-5 28-17 51-36 66m76-43c-16 6-28 17-38 34m46 3c-17 0-33 5-48 16"/>
+</g>
+<g stroke="#ffd44f" stroke-width="5"><path d="M315 245l-7 22m31-25-4 23"/></g>
+</g></svg>
