@@ -26,7 +26,7 @@
   const mediaUrl = new URL('media-loader.js?v=ials-brand-lock-20260805a', assetRoot).href;
   const dealLedgerUrl = new URL('deal-ledger.js?v=ials-misfit-commission-lock-20260805a', assetRoot).href;
   const exportGateUrl = new URL('export-compliance-gate.js?v=ials-export-gate-20260808a', assetRoot).href;
-  const outreachSyncUrl = new URL('outreach-brand-sync.js?v=ials-outreach-sync-20260808a', assetRoot).href;
+  const outreachSyncUrl = new URL('outreach-brand-sync.js?v=ials-outreach-sync-20260808b', assetRoot).href;
   const voiceGuideUrl = new URL('ials-voice-guide.js?v=ials-voice-guide-20260808a', assetRoot).href;
   const lockedFeatureUrl = 'https://raw.githack.com/MisfitMEdiAhouse/misfit-media-designer/41797d06d24d3cf0473d4e83a515f376de849cb7/ials-command-center-v3/assets/admin-assistant.js?v=ials-feature-lock-20260804c';
   const publicSiteUrl = new URL('index.html', location.href).href;
