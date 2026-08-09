@@ -1,20 +1,21 @@
 'use strict';
 
 /*
-  IALS ADMIN BRAND + FEATURE + COMMISSION + EXPORT GATE + OUTREACH SYNC LOCK
-  -------------------------------------------------------------------------
-  This bootstrap intentionally loads five known assets in parser order:
+  IALS ADMIN BRAND + FEATURE + COMMISSION + EXPORT + OUTREACH + VOICE LOCK
+  ------------------------------------------------------------------------
+  This bootstrap intentionally loads six known assets in parser order:
   1) the shared captain-logo/media runtime from the current site build;
   2) the verified Money Board/admin feature bundle from commit 41797d06;
   3) the current browser-local Deal Ledger with a fixed Misfit 10% commission;
   4) the browser-local Export / Quote Gate for compliance-controlled revenue;
-  5) the outreach website-sync and Elmo operator-update controls.
+  5) the outreach website-sync and Elmo operator-update controls;
+  6) the ContextForge-style browser AI voice guide for admin navigation.
 
   Keeping the feature bundle commit-pinned prevents a future cosmetic edit from
   silently deleting the Money Board, Lead Inbox, compliance review, Money Queue,
   backup/restore, or Copilot functionality again. The deal ledger, export gate,
-  and outreach sync are isolated so they can be upgraded without touching the
-  locked feature bundle.
+  outreach sync and voice guide are isolated so they can be upgraded without
+  touching the locked feature bundle.
 */
 (() => {
   if (window.__IALS_ADMIN_BRAND_FEATURE_LOCK__) return;
@@ -26,6 +27,7 @@
   const dealLedgerUrl = new URL('deal-ledger.js?v=ials-misfit-commission-lock-20260805a', assetRoot).href;
   const exportGateUrl = new URL('export-compliance-gate.js?v=ials-export-gate-20260808a', assetRoot).href;
   const outreachSyncUrl = new URL('outreach-brand-sync.js?v=ials-outreach-sync-20260808a', assetRoot).href;
+  const voiceGuideUrl = new URL('ials-voice-guide.js?v=ials-voice-guide-20260808a', assetRoot).href;
   const lockedFeatureUrl = 'https://raw.githack.com/MisfitMEdiAhouse/misfit-media-designer/41797d06d24d3cf0473d4e83a515f376de849cb7/ials-command-center-v3/assets/admin-assistant.js?v=ials-feature-lock-20260804c';
   const publicSiteUrl = new URL('index.html', location.href).href;
 
@@ -52,6 +54,7 @@
   document.write('<script src="' + dealLedgerUrl + '"></' + 'script>');
   document.write('<script src="' + exportGateUrl + '"></' + 'script>');
   document.write('<script src="' + outreachSyncUrl + '"></' + 'script>');
+  document.write('<script src="' + voiceGuideUrl + '"></' + 'script>');
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', wirePublicSiteButton, { once: true });
