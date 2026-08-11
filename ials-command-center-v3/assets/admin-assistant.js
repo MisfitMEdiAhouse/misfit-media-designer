@@ -1,21 +1,19 @@
 'use strict';
 
 /*
-  IALS ADMIN BRAND + FEATURE + COMMISSION + EXPORT + OUTREACH + VOICE LOCK
-  ------------------------------------------------------------------------
-  This bootstrap intentionally loads six known assets in parser order:
-  1) the shared captain-logo/media runtime from the current site build;
-  2) the verified Money Board/admin feature bundle from commit 41797d06;
-  3) the current browser-local Deal Ledger with a fixed Misfit 10% commission;
-  4) the browser-local Export / Quote Gate for compliance-controlled revenue;
-  5) the outreach website-sync and Elmo operator-update controls;
-  6) the ContextForge-style browser AI voice guide for admin navigation.
+  IALS ADMIN BRAND + FEATURE + COMMISSION + EXPORT + OUTREACH + VOICE + T56 LOCK
+  ------------------------------------------------------------------------------
+  Parser-ordered bootstrap:
+  1) shared captain-logo/media runtime;
+  2) verified Money Board/admin feature bundle from commit 41797d06;
+  3) browser-local Deal Ledger;
+  4) Export / Quote Gate;
+  5) outreach website-sync and Elmo update controls;
+  6) ContextForge-style AI voice guide;
+  7) T56/501D bearing recovery + prospecting lane.
 
-  Keeping the feature bundle commit-pinned prevents a future cosmetic edit from
-  silently deleting the Money Board, Lead Inbox, compliance review, Money Queue,
-  backup/restore, or Copilot functionality again. The deal ledger, export gate,
-  outreach sync and voice guide are isolated so they can be upgraded without
-  touching the locked feature bundle.
+  The feature bundle remains commit-pinned so cosmetic edits cannot silently remove
+  the Money Board, Lead Inbox, compliance review, Money Queue, backup/restore or Copilot.
 */
 (() => {
   if (window.__IALS_ADMIN_BRAND_FEATURE_LOCK__) return;
@@ -28,6 +26,7 @@
   const exportGateUrl = new URL('export-compliance-gate.js?v=ials-export-gate-20260808a', assetRoot).href;
   const outreachSyncUrl = new URL('outreach-brand-sync.js?v=ials-outreach-sync-20260808b', assetRoot).href;
   const voiceGuideUrl = new URL('ials-voice-guide.js?v=ials-voice-guide-20260808a', assetRoot).href;
+  const t56RecoveryUrl = new URL('t56-recovery-lane.js?v=ials-t56-recovery-20260810a', assetRoot).href;
   const lockedFeatureUrl = 'https://raw.githack.com/MisfitMEdiAhouse/misfit-media-designer/41797d06d24d3cf0473d4e83a515f376de849cb7/ials-command-center-v3/assets/admin-assistant.js?v=ials-feature-lock-20260804c';
   const publicSiteUrl = new URL('index.html', location.href).href;
 
@@ -45,16 +44,15 @@
     });
   }
 
-  /* Prevent the browser's broken-image icon while the real captain logo decodes. */
   document.write('<style id="ialsBrandLockStyle">.admin-header img{opacity:0!important}.ials-logo-ready .admin-header img{opacity:1!important;transition:opacity .18s ease}.ials-logo-failed .admin-header img{display:none!important}.ials-logo-failed .admin-header a:first-child:before{content:"IALS";display:block;color:#e8bd63;font:900 34px/1 Georgia,serif;letter-spacing:.08em}</style>');
 
-  /* Parser-ordered loading keeps IALSGuide and all extensions available before admin.html initializes them. */
   document.write('<script src="' + mediaUrl + '"></' + 'script>');
   document.write('<script src="' + lockedFeatureUrl + '"></' + 'script>');
   document.write('<script src="' + dealLedgerUrl + '"></' + 'script>');
   document.write('<script src="' + exportGateUrl + '"></' + 'script>');
   document.write('<script src="' + outreachSyncUrl + '"></' + 'script>');
   document.write('<script src="' + voiceGuideUrl + '"></' + 'script>');
+  document.write('<script src="' + t56RecoveryUrl + '"></' + 'script>');
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', wirePublicSiteButton, { once: true });
