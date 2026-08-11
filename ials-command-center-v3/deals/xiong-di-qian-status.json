@@ -2,8 +2,8 @@
   "operation": "Operation Xiong Di Qian",
   "title": "China Bearing Deal — Owner Brief",
   "status": "ACTIVE — COMPLIANCE HOLD",
-  "statusNote": "Legal path remains open. Do not issue a final commercial quote or release material until export classification, end-user review, inventory/trace verification and human compliance approval are complete.",
-  "lastVerified": "2026-08-08 21:18 MT",
+  "statusNote": "Legal path remains open. No Tianjin, SKF, or GE reply is present in Misfit Gmail as of the latest check. Do not issue a final commercial quote or release material until export classification, end-user review, inventory/trace verification and human compliance approval are complete.",
+  "lastVerified": "2026-08-10 20:15 MT",
   "progress": {
     "completed": 3,
     "total": 9,
@@ -30,7 +30,7 @@
   "pending": [
     "Buyer legal registration, ultimate end user, ultimate consignee, intended application/end use, freight forwarder/routing and signed end-use statement.",
     "Authoritative export classification / jurisdiction for both part numbers, including ECCN or USML/ITAR status where applicable.",
-    "IALS physical inventory verification: exact P/N, quantity, manufacturer markings, condition, packaging, trace, certs and shop tags.",
+    "IALS physical inventory verification: exact P/N, quantity, manufacturer markings, condition, packaging, trace, certs and shop tags. Mario/Elmo completion is not yet confirmed in the connected record.",
     "Technical evidence for any 9658M53P02 ↔ 9658M53P03 interchangeability claim.",
     "Real inspection / overhaul cost, TAT, BER risk, certification charges and release-document options from qualified repair shops.",
     "Restricted-party, end-user, consignee and routing screening plus final license determination.",
@@ -38,6 +38,7 @@
     "Human compliance release before shipment or contractual commitment beyond the permitted pre-clearance stage."
   ],
   "ownerActions": [
+    "Reply DONE / NOT DONE to the Aug. 10 owner action check.",
     "Verify whether IALS physically has 9671M26P09 and 9658M53P02/P03, and record the real quantities.",
     "Photograph the bearing markings, packaging and labels; gather every trace document, cert, shop tag and prior repair record available.",
     "Record known history separately for each unit/lot: commercial CF6, industrial, military, repairable/core or unknown.",
@@ -60,10 +61,15 @@
       "detail": "Requested technical/export classification support for the same CF6 bearing part numbers."
     },
     {
+      "state": "SENT",
+      "label": "Owner action check + lead pipeline update",
+      "detail": "Aug. 10: Mario/Elmo was asked to confirm physical stock, quantities, markings, trace/certs and lot history, and was updated on the active D&D, Rebo, Aircraft Trading and New Coast leads."
+    },
+    {
       "state": "ARMED",
       "label": "Owner CC lock",
       "detail": "Mario/Elmo is to be copied on the next external Operation Xiong Di Qian transaction communication unless Jonathan explicitly changes that instruction."
     }
   ],
-  "nextBestMove": "Elmo verifies the physical stock and paperwork while Misfit waits for the buyer end-user package and OEM classification responses. Once those converge, move immediately into real overhaul economics, margin, quote authorization and compliance release."
+  "nextBestMove": "Mario/Elmo confirms the physical stock and paperwork while Misfit waits for the buyer end-user package and OEM classification responses. Once those converge, move immediately into real overhaul economics, margin, quote authorization and compliance release."
 }
