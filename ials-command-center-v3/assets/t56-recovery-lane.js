@@ -1,8 +1,9 @@
 'use strict';
 
 /* IALS T56 / 501D RECOVERY LANE
-   Public code contains sanitized lot summaries only. Serial numbers and detailed
-   condition notes live in the private Misfit Command Center AviationInventoryLot entity.
+   Public code contains sanitized lot summaries and non-sensitive pricing status only.
+   Serial numbers, detailed condition notes, vendor price books and exact repair rates
+   live in the private Misfit Command Center entities AviationInventoryLot and RepairPriceCatalog.
 */
 (() => {
   if (window.__IALS_T56_RECOVERY_LANE__) return;
@@ -24,9 +25,25 @@
     {pn:'6873232',qty:'?',nsn:'3110-00-182-8689',state:'VERIFY',note:'Multiple serial/condition sheets captured privately; current on-hand qty unresolved.'}
   ];
 
+  const pricing = {
+    sourceRows:94,
+    inventoryMatches:22,
+    directCompare:4,
+    knownQtyMatches:12,
+    updated:'Aug 13 2026',
+    priority:[
+      {pn:'6850506',qty:91,status:'2 repair routes priced',decision:'P0 — existing D&D OH demand; compare scope, release docs and TAT before authorizing one unit.'},
+      {pn:'6845296',qty:26,status:'2 repair routes priced',decision:'Large vendor-price spread; compare work scope and release basis before choosing route.'},
+      {pn:'6873732',qty:27,status:'current OH price on file',decision:'Buyer-first lane: find live demand before authorizing shelf overhaul.'},
+      {pn:'6876007',qty:24,status:'current OH price on file',decision:'Keep separate from 6876006; verify identity/trace before repair.'},
+      {pn:'6876006',qty:'?',status:'2 repair routes priced',decision:'Mario confirms IALS stock; physical qty/serials/trace still need capture.'},
+      {pn:'6829354',qty:'?',status:'1 priced route + 1 R&D hold',decision:'Resolve handwritten P/N conflict and physical identity before repair routing.'}
+    ]
+  };
+
   const prospects = [
     {p:'P0',name:'D&D Enterprises',lane:'Existing buyer',why:'P/N 23058594 / 6850506 Qty 1 — order in hand, wants OH after their unit scrapped.',next:'Get real OH quote/TAT/release path for one best-documented 6850506 unit.'},
-    {p:'P0',name:'King Aero Management',lane:'US T56/501D buyer / consignment / MRO',why:'Supports T56/501D AMCs and worldwide end users; offers spare-parts, consignment, component/engine repairs.',next:'Ask whether they buy/consign repairable T56 bearing lots and request current wanted P/N list.'},
+    {p:'P0',name:'King Aero Management',lane:'US T56/501D buyer / consignment / MRO',why:'Supports T56/501D AMCs and worldwide end users; offers spare-parts, consignment, component/engine repairs.',next:'Buyer replied that they purchase 501D22/T56 inventory. Send sanitized, verified inventory list under human gate.'},
     {p:'P0',name:'Segers Aero',lane:'2026 USAF JFOC awardee / Rolls-Royce AMC',why:'Awarded T56 JFOC IDIQ and supports T56/501D engine/components.',next:'Request bearing/core purchase appetite + repair capability/price book; do not claim our lots are JFOC eligible.'},
     {p:'P0',name:'StandardAero',lane:'2026 USAF JFOC awardee / T56 depot',why:'Awarded JFOC and has extensive T56/501D component repair/remanufacturing capability.',next:'Route sanitized inventory/capability inquiry to T56 supply-chain / material team.'},
     {p:'P0',name:'Turbopower',lane:'2026 USAF JFOC awardee / Rolls-Royce AMC',why:'Full T56/501D repair/overhaul, parts and accessory support.',next:'Request current wanted bearing/core list and OH/inspection pricing by exact P/N.'},
@@ -38,6 +55,7 @@
   const esc = v => window.IALS?.esc ? window.IALS.esc(v) : String(v ?? '');
   const qtySheetTotal = 263;
   const serialInferred = 34;
+  const privateLotRecords = 60;
 
   function inject(){
     if (document.getElementById('t56RecoveryPanel')) return;
@@ -50,15 +68,20 @@
     const panel=document.createElement('section'); panel.id='t56RecoveryPanel'; panel.className='panel';
     panel.innerHTML=`
       <div class="section-head"><div><span class="eyebrow">Bearing recovery · C-130/T56 · human gated</span><h2>T56 / 501D <span>Recovery Command.</span></h2></div><p>Buyer-first recovery: demand → exact identity → trace/condition → repair economics → compliance/source approval → human-approved quote.</p></div>
-      <div class="notice danger"><b>CONTROL RULE:</b> Uploaded serials and detailed condition notes are stored in the private Misfit Command Center, not in this public repository. No lot is JFOC-, flight-, export-, or source-approved merely because its P/N appears in a T56 notebook.</div>
+      <div class="notice danger"><b>CONTROL RULE:</b> Uploaded serials, detailed condition notes, vendor price books and exact repair rates are stored in the private Misfit Command Center, not exposed in this public repository. No lot is JFOC-, flight-, export-, or source-approved merely because its P/N appears in a T56 notebook or repair price list.</div>
       <div class="kpi-grid" style="margin-top:14px">
-        <div class="kpi"><b>${lots.length}</b><span>lot families captured</span></div>
+        <div class="kpi"><b>${privateLotRecords}</b><span>private inventory-lot records</span></div>
         <div class="kpi"><b>${qtySheetTotal}</b><span>qty-sheet units captured</span></div>
-        <div class="kpi"><b>${serialInferred}</b><span>extra serial-inferred units*</span></div>
-        <div class="kpi"><b>6</b><span>priority prospect lanes</span></div>
+        <div class="kpi"><b>${pricing.inventoryMatches}</b><span>inventory ↔ repair-price matches</span></div>
+        <div class="kpi"><b>${pricing.sourceRows}</b><span>current repair-price P/N rows</span></div>
       </div>
-      <div class="notice" style="margin-top:12px">*6854949 (~19) and 6829358 (~15) counts are inferred from serial sheets only, not confirmed physical inventory. 6873232 remains unquantified.</div>
-      <div class="section-head" style="margin-top:22px"><div><span class="eyebrow">Batch 01 · Aug 10 2026</span><h2>Captured <span>inventory.</span></h2></div><p>Ambiguous handwriting stays ambiguous until a physical label resolves it.</p></div>
+      <div class="notice" style="margin-top:12px">${pricing.directCompare} P/Ns currently have direct multi-shop pricing comparisons. ${pricing.knownQtyMatches} priced matches also have a known warehouse quantity. Exact vendor rates remain in the private RepairPriceCatalog.</div>
+
+      <div class="section-head" style="margin-top:24px"><div><span class="eyebrow">Repair economics · updated ${pricing.updated}</span><h2>Pricing intelligence <span>is live.</span></h2></div><p>Current Rolls-Royce/Allison repair pricing and direct quote data are matched against IALS inventory so overhaul decisions can be driven by buyer demand and margin instead of guesswork.</p></div>
+      <div class="table-scroll"><table><thead><tr><th>P/N</th><th>IALS Qty</th><th>Pricing status</th><th>Decision gate</th></tr></thead><tbody>${pricing.priority.map(x=>`<tr><td class="pn">${esc(x.pn)}</td><td>${esc(x.qty)}</td><td><span class="chip">${esc(x.status)}</span></td><td>${esc(x.decision)}</td></tr>`).join('')}</tbody></table></div>
+      <div class="next" style="margin-top:14px"><span class="eyebrow">Operator rule</span><h2>Do not overhaul inventory just because a price exists.</h2><p>Use the private RepairPriceCatalog to compare inspection/OH cost, TAT, scope and release basis. Authorize repair only after exact identity/trace, live buyer demand or a defensible stocking thesis, compliance/source approval and target margin are all reviewed.</p></div>
+
+      <div class="section-head" style="margin-top:26px"><div><span class="eyebrow">Sanitized highlights</span><h2>Captured <span>inventory.</span></h2></div><p>These are public-safe highlights only. The full ${privateLotRecords}-record inventory, serials and detailed conditions remain private.</p></div>
       <div class="table-scroll"><table><thead><tr><th>P/N</th><th>Qty</th><th>NSN / cluster</th><th>Status</th><th>Operator note</th></tr></thead><tbody>${lots.map(x=>`<tr><td class="pn">${esc(x.pn)}</td><td>${esc(x.qty)}</td><td>${esc(x.nsn)}</td><td><span class="chip">${esc(x.state)}</span></td><td>${esc(x.note)}</td></tr>`).join('')}</tbody></table></div>
       <div class="section-head" style="margin-top:26px"><div><span class="eyebrow">Worldwide buyer / MRO map</span><h2>Prospecting <span>lanes.</span></h2></div><p>Domestic T56 buyers/MROs first; foreign military lanes remain classification/export gated.</p></div>
       <div class="grid">${prospects.map(x=>`<article class="card"><span class="tag">${esc(x.p)} · ${esc(x.lane)}</span><h3>${esc(x.name)}</h3><p>${esc(x.why)}</p><p class="subtle"><b>Next:</b> ${esc(x.next)}</p></article>`).join('')}</div>
