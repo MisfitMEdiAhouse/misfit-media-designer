@@ -10,7 +10,7 @@
   4) Export / Quote Gate;
   5) outreach website-sync and Elmo update controls;
   6) ContextForge-style AI voice guide;
-  7) T56/501D bearing recovery + prospecting lane.
+  7) T56/501D bearing recovery + prospecting + repair-pricing intelligence lane.
 
   The feature bundle remains commit-pinned so cosmetic edits cannot silently remove
   the Money Board, Lead Inbox, compliance review, Money Queue, backup/restore or Copilot.
@@ -26,7 +26,7 @@
   const exportGateUrl = new URL('export-compliance-gate.js?v=ials-export-gate-20260808a', assetRoot).href;
   const outreachSyncUrl = new URL('outreach-brand-sync.js?v=ials-outreach-sync-20260808b', assetRoot).href;
   const voiceGuideUrl = new URL('ials-voice-guide.js?v=ials-voice-guide-20260808a', assetRoot).href;
-  const t56RecoveryUrl = new URL('t56-recovery-lane.js?v=ials-t56-recovery-20260810a', assetRoot).href;
+  const t56RecoveryUrl = new URL('t56-recovery-lane.js?v=ials-t56-recovery-20260813b', assetRoot).href;
   const lockedFeatureUrl = 'https://raw.githack.com/MisfitMEdiAhouse/misfit-media-designer/41797d06d24d3cf0473d4e83a515f376de849cb7/ials-command-center-v3/assets/admin-assistant.js?v=ials-feature-lock-20260804c';
   const publicSiteUrl = new URL('index.html', location.href).href;
 
