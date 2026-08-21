@@ -60,7 +60,7 @@
       target: 'certificatePanel',
       label: 'END USER CERTIFICATE',
       action: 'Repair Network',
-      text: 'The End User Certificate records the purchaser, end user, intended end use and destination. A signed certificate supports the review, but it never replaces screening, classification, licensing or government authorization.'
+      text: 'The customer-facing End Use Certificate is a single-page purchaser certification covering the products, declared destination, intended use, downstream transfer responsibility and signature. Detailed downstream-party information stays in the internal compliance case. A signed certificate supports the review, but it never replaces screening, classification, licensing or government authorization.'
     },
     {
       panel: 'partnerPanel',
